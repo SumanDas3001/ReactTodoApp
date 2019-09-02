@@ -18,12 +18,20 @@ class App extends React.Component {
     })
   }
 
+  addTodos = (todoValue) => {
+    todoValue.id = Math.random();
+    let todoData = [...this.state.todos, todoValue];
+    this.setState({
+      todos: todoData
+    })
+  }
+
   render(){
     return(
       <div className='todo-app container'>
         <h1 className='center blue-text'>Todos</h1>
         <Todos todos={this.state.todos} deleteTodos={this.deleteTodos} />
-        <AddTodo />
+        <AddTodo addTodos={this.addTodos}/>
       </div>
     );
   }
